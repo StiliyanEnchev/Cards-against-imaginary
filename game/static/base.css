@@ -1,0 +1,117 @@
+:root {
+  --yellow: #fcd000;
+  --black: #111;
+  --light-yellow: #fff9d6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Roboto', sans-serif;
+  background: var(--light-yellow);
+  color: var(--black);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: var(--black);
+  color: var(--yellow);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: bold;
+  border-bottom: 4px solid var(--yellow);
+  letter-spacing: 1px;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;           /* horizontal center */
+  justify-content: center;       /* vertical center */
+  padding: 2rem 1rem;
+  min-height: calc(100vh - header_height - footer_height);
+}
+
+
+.container {
+  background: white;
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 720px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1, h2 {
+  margin-bottom: 1rem;
+}
+
+form {
+  margin-top: 1rem;
+}
+
+input[type="text"], input[type="number"], textarea, select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid var(--black);
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+button {
+  background: var(--black);
+  color: var(--yellow);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: 2px solid var(--yellow);
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: var(--yellow);
+  color: var(--black);
+}
+
+a {
+  color: var(--black);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+footer {
+  background: var(--black);
+  color: var(--yellow);
+  text-align: center;
+  padding: 1rem;
+  border-top: 4px solid var(--yellow);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+  }
+
+  header {
+    font-size: 1.6rem;
+  }
+}
