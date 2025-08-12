@@ -1,10 +1,121 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Room</title>
-</head>
-<body>
-<p>In the room</p>
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Game Room - Cards Against Imaginary{% endblock %}
+
+{% block content %}
+<style>
+  .room-container {
+    display: flex;
+    gap: 24px;
+    min-height: 65vh;
+    padding: 16px 0;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+  }
+
+  .main-content {
+    flex: 1;
+    padding: 0 12px;
+  }
+
+  .main-content h1 {
+    font-weight: 700;
+    font-size: 1.9rem;
+    margin-bottom: 12px;
+    color: #FFD700; /* bright yellow for headings */
+  }
+
+  .main-content p {
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 36px;
+  }
+
+  aside.sidebar {
+    width: 260px;
+    background-color: #FFD700; /* yellow panel */
+    border: none;
+    border-radius: 6px;
+    padding: 18px 20px;
+    box-sizing: border-box;
+    color: #000; /* black text on yellow */
+  }
+
+  aside.sidebar h3 {
+    margin: 0 0 14px 0;
+    font-weight: 700;
+    font-size: 1.25rem;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding-bottom: 6px;
+  }
+
+  ul.players-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 26px 0;
+    max-height: 280px;
+    overflow-y: auto;
+  }
+
+  ul.players-list li {
+    padding: 7px 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    font-weight: 500;
+  }
+
+  button.start-btn {
+    width: 100%;
+    padding: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    background-color: #000;
+    border: none;
+    border-radius: 4px;
+    color: #FFD700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  button.start-btn:disabled {
+    background-color: #444;
+    color: #bbb;
+    cursor: not-allowed;
+  }
+
+  button.start-btn:not(:disabled):hover {
+    background-color: #FFD700;
+    color: #000;
+  }
+
+  @media (max-width: 700px) {
+    .room-container {
+      flex-direction: column;
+    }
+
+    aside.sidebar {
+      width: 100%;
+      max-height: none;
+      margin-top: 24px;
+    }
+  }
+</style>
+
+<div class="room-container">
+
+  <aside class="sidebar">
+    <h3>Players Joined</h3>
+    <ul class="players-list">
+      {% for player in players %}
+        <li>{{ player.name }}</li>
+      {% empty %}
+        <li>No players yet.</li>
+      {% endfor %}
+    </ul>
+
+    <button class="start-btn" {% if players|length < 2 %}disabled{% endif %}>
+      Start Game
+    </button>
+  </aside>
+</div>
+{% endblock %}
