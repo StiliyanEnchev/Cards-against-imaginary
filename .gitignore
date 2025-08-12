@@ -1,6 +1,3 @@
 db.sqlite3
 
 game/migrations
-
-git checkout dev
-git rebase main
