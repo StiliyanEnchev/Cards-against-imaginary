@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Enter username to join room: {{ room_name }}</h2>
+<form method="post">
+  {% csrf_token %}
+  <input type="hidden" name="game_name" value="{{ room_name }}">
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username" required>
+  <button type="submit">Join</button>
+</form>
+
+{% endblock %}
